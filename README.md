@@ -5,7 +5,7 @@ powermock-mockito-demo with springboot
 
 注意
 
-示例使用spring-boot 2.0.3.RELEASE 
+示例使用spring-boot 2.0.3.RELEASE
 它间接引用 junit-4.12  mockito-core-2.15.0
 但是官网powermock 1.7.x只支持2.8.0-2.8.9,如果使用默认引入版本,会出现找不到某些方法的异常.
 需要自定义mockito-core为相应版本。
