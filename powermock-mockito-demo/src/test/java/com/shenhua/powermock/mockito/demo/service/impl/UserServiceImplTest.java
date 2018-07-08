@@ -16,6 +16,7 @@ import org.powermock.modules.junit4.PowerMockRunnerDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.util.AopTestUtils;
 
 import com.shenhua.powermock.mockito.demo.PowermockDemoApplication;
 import com.shenhua.powermock.mockito.demo.entity.User;
@@ -71,8 +72,8 @@ public class UserServiceImplTest {
 		map.put("age", age);
 		map.put("sex", sex);
 		
-		UserService userServiceSpy = PowerMockito.spy(userService);
-		
+		UserService userServiceTarget = AopTestUtils.getTargetObject(userService);
+		UserService userServiceSpy = PowerMockito.spy(userServiceTarget);
 		PowerMockito.doReturn(false).when(userServiceSpy, "addUser1", Mockito.any(User.class));
 		
 		User user = userServiceSpy.addUser(map);
